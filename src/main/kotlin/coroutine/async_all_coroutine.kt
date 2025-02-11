@@ -1,5 +1,6 @@
 package org.example.coroutine
 
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
@@ -10,7 +11,7 @@ fun main() = runBlocking{
         function1()
     }
 
-    val def2 = async {
+    val def2: Deferred<Int> = async {
         function1()
     }
 
