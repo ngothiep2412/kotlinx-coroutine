@@ -1,4 +1,4 @@
-package org.example
+package org.example.coroutine
 
 import kotlinx.coroutines.*
 
@@ -9,16 +9,12 @@ fun main(): Unit = runBlocking {
     // uncaught exception
 
     val scope = CoroutineScope(
-        context = Dispatchers.Default + Job() +
-        CoroutineExceptionHandler{coroutineContext, throwable ->
-            println(">>> CoroutineExceptionHandler: $throwable")
-            println(">>> CoroutineExceptionHandler: $coroutineContext")
-        }
+        context = Dispatchers.Default + Job()
     )
 
-    class VIewModel {
+    class ViewModel {
         suspend fun getApi() = "OK"
-
+        
         fun doSomething() {
             scope.launch {
                 try {
@@ -32,24 +28,39 @@ fun main(): Unit = runBlocking {
         }
     }
 
-    scope.launch {
+    val d1 = scope.async{
         println("launch 1")
         delay(1)
         println("launch 1 throws ...")
         throw RuntimeException("launch 1 failed")
     }
 
-    scope.launch {
+    val d2 = scope.async {
         println("launch 2")
         delay(1000)
         println("launch 1 throws ...")
     }
 
-    scope.launch {
+    val d3 = scope.async {
         println("launch 3")
         delay(100)
         println("launch 3 done ...")
     }
+
+
+
+    try {
+        d1.await()
+    } catch (e: RuntimeException) {
+        println("d1 failed: $e")
+    }
+
+//
+//    try {
+//        d2.await()
+//    } catch (e: RuntimeException) {
+//        println("d2 failed: $e")
+//    }
 
     delay(5_5000)
 }

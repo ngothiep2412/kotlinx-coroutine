@@ -1,4 +1,4 @@
-package org.example
+package org.example.coroutine
 
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async

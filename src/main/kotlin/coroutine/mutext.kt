@@ -1,4 +1,4 @@
-package org.example
+package org.example.coroutine
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex

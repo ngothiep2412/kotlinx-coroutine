@@ -1,4 +1,4 @@
-package org.example
+package org.example.coroutine
 
 // Race condition
 // Cyclic barrier

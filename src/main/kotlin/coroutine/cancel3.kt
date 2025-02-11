@@ -1,4 +1,4 @@
-package org.example
+package org.example.coroutine
 
 import kotlinx.coroutines.*
 
@@ -8,11 +8,11 @@ fun main() = runBlocking {
             try {
                 println("job: I'm sleeping $i ...")
                 delay(500)
-            } catch (cancel: CancellationException) {
-                throw cancel
-            }
-            catch (e: Exception) {
-                println(e)
+            } finally {
+              withContext(NonCancellable) {
+                  delay(100)
+                  println("job: I'm already to quit")
+              }
             }
         }
     }
