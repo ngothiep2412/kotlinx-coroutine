@@ -1,4 +1,4 @@
-package org.example.coroutine
+package coroutine
 
 import kotlinx.coroutines.*
 
@@ -10,11 +10,12 @@ fun main(): Unit = runBlocking {
 
     val scope = CoroutineScope(
         context = Dispatchers.Default + Job() +
-        CoroutineExceptionHandler{coroutineContext, throwable ->
-            println(">>> CoroutineExceptionHandler: $throwable")
-            println(">>> CoroutineExceptionHandler: $coroutineContext")
-        }
+       CoroutineExceptionHandler { coroutineContext, throwable ->
+           println(">>> CoroutineExceptionHandler: $throwable")
+           println(">>> CoroutineExceptionHandler: $coroutineContext")
+       }
     )
+
 
     class VIewModel {
         suspend fun getApi() = "OK"

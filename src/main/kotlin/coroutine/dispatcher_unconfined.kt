@@ -1,4 +1,4 @@
-package org.example.coroutine
+package coroutine
 
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
