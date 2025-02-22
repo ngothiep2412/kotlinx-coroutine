@@ -22,8 +22,8 @@ fun main() = runBlocking {
                 throw Exception("Job 2 failed.")
             }
 
-            job1.join()
-            job2.join()
+            job1.cancelAndJoin()
+            job2.cancelAndJoin()
         }
     } catch (e: Exception) {
         println("Caught exception: ${e.message}")
