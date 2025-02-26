@@ -5,8 +5,8 @@ fun main() {
 
     hashset.forEach(::println)
 
-    val linkedSet  = linkedSetOf(1,2,3,4,4,5,5,3)
-    linkedSet.forEach(::println)
+//    val linkedSet  = linkedSetOf(1,2,3,4,4,5,5,3)
+//    linkedSet.forEach(::println)
 }
 
 

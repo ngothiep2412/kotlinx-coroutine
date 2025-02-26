@@ -4,14 +4,13 @@ import kotlinx.coroutines.*
 
 fun main() = runBlocking {
     val job = launch {
-        repeat(5) {i ->
+        repeat(5) { i ->
             try {
                 println("job: I'm sleeping $i ...")
                 delay(500)
             } catch (cancel: CancellationException) {
                 throw cancel
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 println(e)
             }
         }
