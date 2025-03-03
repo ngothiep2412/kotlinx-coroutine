@@ -7,6 +7,7 @@ import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking{
 
+    // trong trường hợp gọi nhiều api mà ko đồng thời thì awaitAll
     val def = async {
         function1()
     }
